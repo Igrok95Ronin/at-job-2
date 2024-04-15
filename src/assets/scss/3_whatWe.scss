@@ -1,0 +1,21 @@
+.whatWe {
+    margin-top: 50px;
+}
+.whatWe__box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+.whatWe__left {
+}
+.whatWe__title {
+    @include h2Title;
+}
+.whatWe__txt {
+    line-height: 20px;
+}
+.whatWe__right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
